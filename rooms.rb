@@ -1,5 +1,7 @@
 class Rooms
 
+  attr_reader :name, :capacity, :songs_in_room
+
   def initialize(name, capacity, songs_in_room)
     @name = name
     @capacity = capacity
