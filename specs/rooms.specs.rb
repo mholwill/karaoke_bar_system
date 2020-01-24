@@ -65,11 +65,16 @@ class RoomsTest < Minitest::Test
     assert_equal(2, @room1.check_room_capacity)
   end
 
-  # def test_stop_too_many_guests_enter_a_room
-  #   @room1.add_guest_to_room(@guest1)
-  #   @room1.add_guest_to_room(@guest2)
-  #   @room1.add_guest_to_room(@guest3)
-  #   assert_equal("ROOM FULL", @room1.capacity_of_room)
-  # end
+  def test_stop_too_many_guests_enter_a_room
+    @room1.add_guest_to_room(@guest1)
+    @room1.add_guest_to_room(@guest2)
+    @room1.add_guest_to_room(@guest3)
+    assert_equal("ROOM FULL", @room1.capacity_of_room)
+  end
+
+  def test_space_still_available_in_room
+    @room1.add_guest_to_room(@guest1)
+    assert_equal("YOU CAN SING HERE", @room1.capacity_of_room)
+  end
 
 end

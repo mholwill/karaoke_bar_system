@@ -35,14 +35,15 @@ class Rooms
     return @capacity
   end
 
-  # def capacity_of_room()
-  #   total_guest = []
-  #     for guest in @guests
-  #       total_guest += @guests
-  #         return "ROOM FULL"
-  #       end
-  #     end
-  # end
+  def capacity_of_room()
+      for guest in @guests
+        if check_guests_in_room() > @capacity
+          return "ROOM FULL"
+        else
+          return "YOU CAN SING HERE"
+        end
+      end
+  end
 
 
 end
