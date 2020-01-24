@@ -21,16 +21,18 @@ class Rooms
     @guests.delete(guest)
   end
 
+  ##add group
+  def add_group_of_guests(guests)
+    for guest in guests
+      add_guest_to_room(guests)
+    end
+  end
+
+
   def add_song_to_room(new_song)
     @songs_in_room.push(new_song)
   end
 
-  ###add group
-  # guest_group
-  # for guest in guests
-  #   room.add_guest_to_room(guest)
-  # end
-  #
 
 
 

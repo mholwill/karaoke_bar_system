@@ -43,6 +43,11 @@ class RoomsTest < Minitest::Test
     assert_equal(1, @room1.guests_in_room)
   end
 
+  def test_add_group_of_guests
+    @room1.add_group_of_guests(@guests)
+    assert_equal(3, @room1.guests_in_room)
+  end
+
   def test_remove_guest_to_room
     @guest1 = Guest.new("Fraser", 18, 50, "Stop Right Now")
     @room2 = Rooms.new("Pop", @songs, 2)
@@ -54,7 +59,6 @@ class RoomsTest < Minitest::Test
   def test_add_song_to_room
     @room1.add_song_to_room(@new_song)
     assert_equal(4, @room1.songs_in_room.count)
-
   end
 
 end
