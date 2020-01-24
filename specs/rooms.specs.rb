@@ -31,7 +31,7 @@ class RoomsTest < Minitest::Test
   end
 
   def test_get_guests_in_room
-    assert_equal(0, @room1.guests_in_room)
+    assert_equal(0, @room1.check_guests_in_room)
   end
 
   def test_get_songs_in_room
@@ -40,12 +40,12 @@ class RoomsTest < Minitest::Test
 
   def test_add_guest_to_room
     @room1.add_guest_to_room(@guest1)
-    assert_equal(1, @room1.guests_in_room)
+    assert_equal(1, @room1.check_guests_in_room)
   end
 
   def test_add_group_of_guests
     @room1.add_group_of_guests(@guests)
-    assert_equal(3, @room1.guests_in_room)
+    assert_equal(3, @room1.check_guests_in_room)
   end
 
   def test_remove_guest_to_room
@@ -53,12 +53,23 @@ class RoomsTest < Minitest::Test
     @room2 = Rooms.new("Pop", @songs, 2)
     @room2.add_guest_to_room(@guest1)
     @room2.remove_guest_from_room(@guest1)
-    assert_equal(0, @room2.guests_in_room)
+    assert_equal(0, @room2.check_guests_in_room)
   end
 
   def test_add_song_to_room
     @room1.add_song_to_room(@new_song)
     assert_equal(4, @room1.songs_in_room.count)
   end
+
+  def test_check_room_capacity
+    assert_equal(2, @room1.check_room_capacity)
+  end
+
+  # def test_stop_too_many_guests_enter_a_room
+  #   @room1.add_guest_to_room(@guest1)
+  #   @room1.add_guest_to_room(@guest2)
+  #   @room1.add_guest_to_room(@guest3)
+  #   assert_equal("ROOM FULL", @room1.capacity_of_room)
+  # end
 
 end

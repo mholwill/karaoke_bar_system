@@ -9,7 +9,7 @@ class Rooms
     @guests = []
   end
 
-  def guests_in_room
+  def check_guests_in_room()
     return @guests.length
   end
 
@@ -21,21 +21,28 @@ class Rooms
     @guests.delete(guest)
   end
 
-  ##add group
   def add_group_of_guests(guests)
     for guest in guests
       add_guest_to_room(guests)
     end
   end
 
-
   def add_song_to_room(new_song)
     @songs_in_room.push(new_song)
   end
 
+  def check_room_capacity()
+    return @capacity
+  end
 
-
-
+  # def capacity_of_room()
+  #   total_guest = []
+  #     for guest in @guests
+  #       total_guest += @guests
+  #         return "ROOM FULL"
+  #       end
+  #     end
+  # end
 
 
 end
