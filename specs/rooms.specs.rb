@@ -4,6 +4,7 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 require_relative('../rooms')
 require_relative('../songs')
+require_relative('../guest')
 
 class RoomsTest < Minitest::Test
 
@@ -12,7 +13,14 @@ class RoomsTest < Minitest::Test
     @song2 = Songs.new("Hey Jude")
     @song3 = Songs.new("You Raise Me Up")
     @songs = [@song1, @song2, @song3]
-    @room1 = Rooms.new("Pop", 3, @songs)
+
+    @guest1 = Guest.new("Fraser", 18, 50, "Stop Right Now")
+    @guest2 = Guest.new("Luke", 23, 150, "Hey Jude")
+    @guest3 = Guest.new("Graham", 23, 150, "99 Problems")
+    @guests = [@guest1, @guest2, @guest3]
+
+
+    @room1 = Rooms.new("Pop", @songs, 2)
 
   end
 
@@ -20,12 +28,25 @@ class RoomsTest < Minitest::Test
     assert_equal("Pop", @room1.name)
   end
 
-  def test_get_max_capacity
-    assert_equal(3, @room1.capacity)
+  def test_get_guests_in_room
+    assert_equal(0, @room1.guests_in_room)
   end
 
   def test_get_songs_in_room
     assert_equal(3, @room1.songs_in_room.count)
+  end
+
+  def test_add_guest_to_room
+    @room1.add_guest_to_room(@guest1)
+    assert_equal(1, @room1.guests_in_room)
+  end
+
+  def test_remove_guest_to_room
+    @guest1 = Guest.new("Fraser", 18, 50, "Stop Right Now")
+    @room2 = Rooms.new("Pop", @songs, 2)
+    @room2.add_guest_to_room(@guest1)
+    @room2.remove_guest_from_room(@guest1)
+    assert_equal(0, @room2.guests_in_room)
   end
 
 end
