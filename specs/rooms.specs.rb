@@ -14,6 +14,8 @@ class RoomsTest < Minitest::Test
     @song3 = Songs.new("You Raise Me Up")
     @songs = [@song1, @song2, @song3]
 
+    @new_song = Songs.new("Purple Rain")
+
     @guest1 = Guest.new("Fraser", 18, 50, "Stop Right Now")
     @guest2 = Guest.new("Luke", 23, 150, "Hey Jude")
     @guest3 = Guest.new("Graham", 23, 150, "99 Problems")
@@ -47,6 +49,12 @@ class RoomsTest < Minitest::Test
     @room2.add_guest_to_room(@guest1)
     @room2.remove_guest_from_room(@guest1)
     assert_equal(0, @room2.guests_in_room)
+  end
+
+  def test_add_song_to_room
+    @room1.add_song_to_room(@new_song)
+    assert_equal(4, @room1.songs_in_room.count)
+
   end
 
 end
