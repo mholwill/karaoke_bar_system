@@ -86,7 +86,11 @@ class RoomsTest < Minitest::Test
   def test_if_fav_song_not_in_room
     @room1.add_guest_to_room(@guest1)
     assert_equal("OH MAN! I want to sing my favourite song", @room1.fav_song_in_room(@guest1))
+  end
 
+  def test_increase_bar_tab
+    @room1.increase_bar_tab(50)
+    assert_equal(50, @room1.bar_tab_total)
   end
 
 end

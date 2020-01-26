@@ -16,5 +16,13 @@ class Bar
   def increase_money_in_till(amount)
     @till_total += amount
   end
-  
+
+  def check_id(guest)
+    if guest.age >= 18
+      return "PASS"
+    else
+      return "NO SERVICE"
+    end
+  end
+
 end

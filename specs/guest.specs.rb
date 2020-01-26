@@ -45,12 +45,12 @@ class GuestTest < Minitest::Test
 
   def test_pay_bar_tab
     @guest2 = Guest.new("Sam", 18, 40, "Hurt")
-    @guest1.setup_bar_tab(@room1, 25)
-    @guest2.setup_bar_tab(@room1, 25)
+    @guest1.setup_bar_tab(@room1, @bar1, 25)
+    @guest2.setup_bar_tab(@room1, @bar1, 25)
     assert_equal(125, @guest1.money_in_wallet)
     assert_equal(15, @guest2.money_in_wallet)
-    assert_equal(350, @bar1.till_total)
-    assert_equal(50, @room1.bar_tab)
+    assert_equal(350, @bar1.money_in_till)
+    assert_equal(50, @room1.bar_tab_total)
   end
 
 

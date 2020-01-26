@@ -55,4 +55,13 @@ class Rooms
     return "OH MAN! I want to sing my favourite song"
   end
 
+  def bar_tab_total
+    return @bar_tab
+  end
+
+  def increase_bar_tab(amount)
+    @bar_tab += amount
+  end
+
+
 end

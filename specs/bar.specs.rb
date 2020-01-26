@@ -42,7 +42,17 @@ class BarTest < Minitest::Test
   def test_increase_money_in_till
     @bar1.increase_money_in_till(20)
     assert_equal(320, @bar1.money_in_till)
-
   end
+
+  def test_check_id__over_18
+    assert_equal("PASS", @bar1.check_id(@guest1))
+  end
+
+  def test_check_id__under_18
+    @guest2 = Guest.new("Sam", 17, 50, "Before You Go")
+    assert_equal("PASS", @bar1.check_id(@guest1))
+  end
+
+
 
 end
