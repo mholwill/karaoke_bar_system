@@ -23,6 +23,12 @@ class Guest
     bar.increase_money_in_till(entry_fee)
   end
 
+  def setup_bar_tab(room, amount)
+    amount = room.bar_tab
+    spend_money(amount)
+    bar.increase_money_in_till(amount)
+    room.bar_tab(amount)
+  end
 
 
 

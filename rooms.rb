@@ -7,9 +7,10 @@ class Rooms
     @songs_in_room = songs_in_room
     @capacity = capacity
     @guests = []
+    @bar_tab = 0
   end
 
-  def check_guests_in_room()
+  def total_guests_in_room()
     return @guests.length
   end
 
@@ -37,7 +38,7 @@ class Rooms
 
   def capacity_of_room()
       for guest in @guests
-        if check_guests_in_room() > @capacity
+        if total_guests_in_room() > @capacity
           return "ROOM FULL"
         else
           return "YOU CAN SING HERE"
@@ -45,5 +46,13 @@ class Rooms
       end
   end
 
+  def fav_song_in_room(guest)
+    for song in @songs_in_room
+      if guest.favourite_song == song.name
+        return "YES!"
+      end
+    end
+    return "OH MAN! I want to sing my favourite song"
+  end
 
 end
